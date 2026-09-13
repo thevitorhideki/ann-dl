@@ -18,7 +18,7 @@ Quem responde por este repositório. Os **exercícios são individuais**; a equi
 
 | Nome completo | E-mail | GitHub |
 |---------------|--------|--------|
-| | | |
+| Vitor Hideki Pereira Katakura | <thevitorhpk@gmail.com> | @thevitorhideki |
 
 !!! tip "Como usar este template"
 
@@ -42,7 +42,7 @@ Quem responde por este repositório. Os **exercícios são individuais**; a equi
 
 ### Exercícios — individuais
 
-- [ ] [Data](exercises/data/index.md)
+- [x] [Data](exercises/data/index.ipynb)
 - [ ] [Perceptron](exercises/perceptron/index.md)
 - [ ] [MLP](exercises/mlp/index.md)
 - [ ] [VAE](exercises/vae/index.md)

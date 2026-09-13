@@ -6,10 +6,10 @@
 #  Passo a passo em docs/template/index.md > Publicação no GitHub Pages.
 # =============================================================================
 site_name: ANN-DL · Entregas                  # TROCAR: título exibido no topo do site
-site_author: Seu Nome, Sobrenome              # TROCAR: seu nome (ou os nomes do grupo)
-site_url: https://repo-classes.github.io/ann-dl    # TROCAR: https://<seu-usuario>.github.io/<seu-repo>
-repo_url: https://github.com/repo-classes/ann-dl/   # TROCAR: https://github.com/<seu-usuario>/<seu-repo>
-repo_name: repo-classes/ann-dl                     # TROCAR: <seu-usuario>/<seu-repo>
+site_author: Vitor Hideki, Pereira Katakura              # TROCAR: seu nome (ou os nomes do grupo)
+site_url: https://thevitorhideki.github.io/ann-dl    # TROCAR: https://<seu-usuario>.github.io/<seu-repo>
+repo_url: https://github.com/thevitorhideki/ann-dl/   # TROCAR: https://github.com/<seu-usuario>/<seu-repo>
+repo_name: thevitorhideki/ann-dl                     # TROCAR: <seu-usuario>/<seu-repo>
 
 theme:
   name: material
@@ -113,6 +113,11 @@ plugins:
       include_source: true
       # Sem isto, os .py de code/ virariam páginas do site
       include: ["*.ipynb"]
+      # O front matter de um relatório em notebook mora numa célula raw marcada
+      # com esta tag; aqui ela some da página, como aconteceria num .md
+      remove_tag_config:
+        remove_cell_tags:
+          - front-matter
 
 # Além dos links, valida as âncoras (#secao) — com --strict, âncora quebrada vira erro.
 validation:
@@ -146,7 +151,7 @@ nav:
 
   # A lista de entregas muda de edição para edição: acrescente ou remova itens
   # aqui e as pastas correspondentes em docs/.
-  - Data: exercises/data/index.md
+  - Data: exercises/data/index.ipynb
   - Perceptron: exercises/perceptron/index.md
   - MLP: exercises/mlp/index.md
   - VAE: exercises/vae/index.md
@@ -165,6 +170,6 @@ nav:
     - Como montar o menu: examples/index.md
     - Notebook no menu: examples/notebook/data-exercise-1.ipynb
     # TROCAR "usuario/ann-dl" pelo seu repositório, senão o link abre o notebook de outra pessoa:
-    - Abrir no Colab ↗: https://colab.research.google.com/github/usuario/ann-dl/blob/main/docs/examples/notebook/data-exercise-1.ipynb
+    - Abrir no Colab ↗: https://colab.research.google.com/github/thevitorhideki/ann-dl/blob/main/docs/examples/notebook/data-exercise-1.ipynb
 
   - Enunciados da disciplina ↗: https://insper.github.io/ann-dl/
