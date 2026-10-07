@@ -1,0 +1,20 @@
+#,Métrica,Valor
+1,"Dataset, tarefa e alvo",Bank Marketing / bank-full.csv; classificação; y=yes/no
+2,Instâncias × features (numéricas / categóricas),"45,211 × 16 (7 / 9), mais y"
+3,Coluna com mais NaN e %,"Todas empatadas: 0 (0,00%)"
+4,Maior desconhecimento semântico,poutcome: 81.75% unknown
+5,Colunas removidas e motivo,duration: pós-ligação; campaign: inclui contato atual
+6,Classe minoritária,"yes: 11.70% (5,289)"
+7,Razão de desbalanceamento,7.55:1
+8,Baseline sempre no,Acurácia 88.30%; recall positivo 0%
+9,Treino / teste,"36,168 / 9,043"
+10,Par numérico mais correlacionado,pdays × previous: Spearman 0.986
+11,Maior |correlação numérica–alvo|,duration: 0.343 (inclui features excluídas)
+12,Duplicatas / inconsistências nas regras,0 / 0
+13,Linhas com flags IQR nas numéricas do modelo,"9,757 (treino)"
+14,Flags nas caudas comprimidas por log,"9,565 linhas; removidas 0; winsorizadas 0"
+15,Total de linhas com transformação log relevante,"33,725 (treino)"
+16,Variância PC1 + PC2,27.27%
+17,Features antes / após encoding,16 brutas → 14 retidas + indicador → 80 finais
+18,Shape após pipeline (treino / teste),"(36168, 80) / (9043, 80)"
+19,NaN / infinitos após pipeline,0 / 0 em ambas as partições
