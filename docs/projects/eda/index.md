@@ -1,152 +1,116 @@
 ---
 project: eda
-ai_use: "none"
+task: classification
+dataset: https://archive.ics.uci.edu/dataset/222/bank+marketing
+team: []
+ai_use: "Codex: elaboração de código, análise e redação; revisão da equipe pendente."
 ---
 
-# 1. EDA — Análise Exploratória
+# 1. EDA — Bank Marketing
 
-!!! abstract "Entrega 1 de 3 do [Projeto](../index.md)"
+**Equipe:** preencher nomes completos e GitHub antes da entrega.
 
-    [Projects](https://insper.github.io/ann-dl/){:target='_blank'}
+O relatório completo, com código executado, tabelas, interpretações e nove figuras, está no
+[notebook de EDA](index.ipynb), que também é a página principal desta entrega no menu.
 
-!!! info "Equipe"
+## 0. Proposal
 
-    | Nome completo | GitHub |
-    |---------------|--------|
-    | | |
-    | | |
-    | | |
+Foi selecionado **Bank Marketing**, da [UCI](https://archive.ics.uci.edu/dataset/222/bank+marketing),
+na versão `bank-full.csv`, licenciada sob CC BY 4.0. A escolha foi registrada na
+[conversa de referência](https://chatgpt.com/s/t_6ac6c39017b08191b83c26d6dc3f00dc).
+Aprovação pelo docente: confirmar e registrar o status real.
 
-    Dataset, decisões e status: [página do projeto](../index.md).
+O objetivo é prever adesão a depósito a prazo antes da ligação. A combinação de dados
+numéricos e categóricos, histórico de campanhas e desbalanceamento exige preparação
+cuidadosa. O dicionário da versão está em `code/bank-names.txt`.
 
-!!! tip "O que esta entrega decide"
+## 1. Initial inspection
 
-    O EDA não é um álbum de gráficos: é onde a equipe **escolhe o dataset** e descobre o que
-    vai atrapalhar o treino depois — desbalanceamento, vazamento, escalas incompatíveis com a
-    ativação, ausências não aleatórias. Cada achado aqui deve virar uma linha do plano de
-    pré-processamento no fim da página, e é esse plano que as duas entregas
-    seguintes executam.
+O arquivo contém **45,211 registros, 16 entradas (7 numéricas e 9 categóricas) e o alvo `y`**.
+Não há NaN ou duplicatas completas. O maior desconhecimento semântico é em
+`poutcome`: **81.75%** de `unknown`. `pdays=-1` indica ausência de contato anterior.
 
-    As aulas de **Classes → Data** no
-    [site da disciplina](https://insper.github.io/ann-dl/){:target='_blank'} dão a estrutura:
-    tipos, distribuições, qualidade, desbalanceamento, vazamento, split e pré-processamento.
+A classe `yes` representa **5,289 registros (11.70%)**;
+a razão entre classes é **7.55:1**. O baseline sempre `no` tem
+**88.30% de acurácia** e recall positivo zero.
+O split estratificado, seed 42, reserva **36,168 registros para treino** e
+**9,043 para teste**, antes das transformações.
 
-## 1. Dataset
+## 2. Univariate analysis
 
-Nome, fonte, licença, dimensões e **por que** este dataset. Se houve troca em relação a uma
-ideia anterior, diga qual e por quê.
+As estatísticas de todas as numéricas e frequências de todas as categóricas estão no notebook.
+Caudas longas e escalas distintas motivam compressão logarítmica e padronização.
+Categorias raras são sinalizadas; `unknown` é preservado como categoria.
+A regra IQR marca **9,757 linhas de treino** nas numéricas do modelo,
+mas nenhuma linha é removida ou winsorizada. A regra em contagens com IQR zero exige cautela.
 
-## 2. Estrutura e tipos
+## 3. Bivariate and multivariate analysis
 
-Quantas amostras, quantas features, e o tipo de cada uma (numérica contínua, discreta,
-categórica nominal, ordinal, data, texto). Aponte as que estão com o tipo errado no arquivo
-bruto — um CEP lido como inteiro é numérico para o pandas e categórico para o modelo.
+O par mais correlacionado é **pdays × previous (Spearman 0.986)**.
+A correlação cai para **−0,099** nos clientes previamente contatados: a sentinela explica
+boa parte da associação global. Resultado de campanha anterior diferencia taxas de adesão,
+sem demonstrar causalidade.
 
-| Feature | Tipo | Cardinalidade / faixa | Observação |
-|---------|------|-----------------------|------------|
-| | | | |
+A duração mediana é **426s em yes** e
+**164s em no**. Essa relação é relevante para investigar vazamento,
+mas a exclusão se deve à indisponibilidade da variável antes da ligação.
 
-## 3. Variável alvo
+## 4. Preprocessing
 
-Distribuição do alvo e o que ela implica.
+### Plano de pré-processamento {#8-plano-de-pre-processamento}
 
-- **Classificação:** proporção por classe, razão entre a maior e a menor.
-- **Regressão:** distribuição, assimetria, cauda, presença de zeros ou censura.
+O [pipeline importável](code/preprocessing.py) exclui `duration` e, conservadoramente,
+`campaign`; aplica signed-log ao saldo, log1p ao histórico, indicador de nunca contatado,
+imputação no treino, StandardScaler e one-hot. `day` recebe encoding categórico.
+Categorias inéditas e faltas reais foram verificadas em um caso sintético.
 
-![Distribuição da variável alvo](figures/fig01-exemplo.svg)
-/// caption
-**Figura 1** — Distribuição da variável alvo.
-///
+A saída tem **80 features**: treino **(36168, 80)**,
+teste **(9043, 80)**, sem NaN ou infinitos. PCA explica
+**27.27% com PC1+PC2**; 90% requer **32 componentes**.
+t-SNE (perplexity 10/30) e UMAP (n_neighbors 5/30) usam a mesma amostra de 2.000 registros
+de treino. As classes permanecem misturadas nas projeções; ilhas não comprovam separabilidade.
 
-!!! question "Responda"
+## 5. Synthesis
 
-    O quão desbalanceado está? Um classificador que sempre responde a classe majoritária
-    acerta quantos por cento? Esse número é o seu *baseline* — as entregas seguintes precisam
-    superá-lo.
+Usar PR-AUC, recall, precision, F1 e balanced accuracy na próxima entrega; reservar validação
+dentro do treino e reajustar o pipeline em cada fold. O teste não escolhe parâmetros.
+A falta de ano e ID de cliente limita avaliação temporal e por cliente. Confirmar se dia,
+mês e canal planejados estão disponíveis no instante da previsão; se não estiverem, removê-los.
 
-## 4. Análise univariada
-
-Distribuição de cada feature relevante: medidas de posição e dispersão, e o formato.
-Não gere 40 histogramas; escolha os que mudam alguma decisão e explique o critério.
-
-## 5. Análise bivariada e correlações
-
-Relação entre as features e o alvo, e entre as features.
-
-!!! danger "Correlação alta demais com o alvo é suspeita"
-
-    Uma feature que prevê o alvo quase perfeitamente costuma ser **vazamento**: informação
-    que só existe depois do fato que você quer prever. Investigue antes de comemorar.
-
-## 6. Qualidade dos dados
-
-### Valores ausentes
-
-| Feature | % ausente | Padrão (aleatório?) | Tratamento planejado |
-|---------|-----------|---------------------|----------------------|
-| | | | |
-
-Ausência raramente é aleatória. Se falta mais em um grupo do que em outro, o próprio "estar
-ausente" carrega informação.
-
-### Duplicatas e inconsistências
-
-Linhas repetidas, categorias escritas de formas diferentes, unidades misturadas, datas
-impossíveis.
-
-### Outliers
-
-Como foram detectados e o que será feito com eles — e por quê. Remover outlier é decisão de
-modelagem, não faxina.
-
-## 7. Riscos de vazamento
-
-Liste as fontes de vazamento identificadas e como cada uma será contida.
-
-``` mermaid
-flowchart LR
-    raw[Dados brutos] --> split{{split treino/teste}}
-    split -->|treino| fit["fit_transform<br/>(estatísticas saem só daqui)"]
-    split -->|teste| apply[transform]
-    fit --> model[Modelo]
-    apply --> model
-```
-
-| Risco | Onde aparece | Contenção |
-|-------|--------------|-----------|
-| Estatísticas calculadas antes do split | | Ajustar transformadores só no treino |
-| | | |
-
-## 8. Plano de pré-processamento
-
-A saída desta entrega. Uma linha por transformação, ligando cada uma a um achado acima.
-
-| # | Transformação | Features | Motivo (seção) |
-|---|---------------|----------|----------------|
-| 1 | | | |
-
-## 9. Estratégia de split
-
-Proporções, estratificação, e o que impede uma mesma entidade de cair nos dois lados
-(agrupamento por usuário, por data, por sessão).
-
-## Results summary
+### Results summary
 
 | # | Métrica | Valor |
-|---|---------|-------|
-| 1 | Amostras | |
-| 2 | Features (antes / depois do encoding) | |
-| 3 | Features com ausentes | |
-| 4 | Maior % de ausência em uma feature | |
-| 5 | Linhas duplicadas | |
-| 6 | Razão de desbalanceamento do alvo | |
-| 7 | Acurácia (ou erro) do baseline trivial | |
-| 8 | Maior correlação feature–alvo | |
-| 9 | Amostras treino / teste após o split | |
+|---|---|---|
+| 1 | Dataset, tarefa e alvo | Bank Marketing / bank-full.csv; classificação; y=yes/no |
+| 2 | Instâncias × features (numéricas / categóricas) | 45,211 × 16 (7 / 9), mais y |
+| 3 | Coluna com mais NaN e % | Todas empatadas: 0 (0,00%) |
+| 4 | Maior desconhecimento semântico | poutcome: 81.75% unknown |
+| 5 | Colunas removidas e motivo | duration: pós-ligação; campaign: inclui contato atual |
+| 6 | Classe minoritária | yes: 11.70% (5,289) |
+| 7 | Razão de desbalanceamento | 7.55:1 |
+| 8 | Baseline sempre no | Acurácia 88.30%; recall positivo 0% |
+| 9 | Treino / teste | 36,168 / 9,043 |
+| 10 | Par numérico mais correlacionado | pdays × previous: Spearman 0.986 |
+| 11 | Maior |correlação numérica–alvo| | duration: 0.343 (inclui features excluídas) |
+| 12 | Duplicatas / inconsistências nas regras | 0 / 0 |
+| 13 | Linhas com flags IQR nas numéricas do modelo | 9,757 (treino) |
+| 14 | Flags nas caudas comprimidas por log | 9,565 linhas; removidas 0; winsorizadas 0 |
+| 15 | Total de linhas com transformação log relevante | 33,725 (treino) |
+| 16 | Variância PC1 + PC2 | 27.27% |
+| 17 | Features antes / após encoding | 16 brutas → 14 retidas + indicador → 80 finais |
+| 18 | Shape após pipeline (treino / teste) | (36168, 80) / (9043, 80) |
+| 19 | NaN / infinitos após pipeline | 0 / 0 em ambas as partições |
 
-## Conclusão
+## Reprodução e referências
 
-O que o dataset permite e o que ele impede. Se algum achado inviabiliza a tarefa pretendida,
-é aqui que a equipe muda de rumo — ainda dá tempo.
+Instale `code/requirements.txt` e execute todas as células do [notebook](index.ipynb).
+O CSV oficial acompanha esta entrega e é validado por SHA-256; há download automático de fallback.
+O notebook registra versões das bibliotecas. Os resultados também estão em
+`code/results-summary.csv` e `code/results-summary.json`.
 
-## Referências
+- [UCI Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing).
+- Moro, S.; Laureano, R.; Cortez, P. (2011). *Using Data Mining for Bank Direct Marketing:
+  An Application of the CRISP-DM Methodology*. ESM'2011, pp. 117–121.
+- [Site da disciplina](https://insper.github.io/ann-dl/): Projects → EDA.
+
+Preencher nomes, confirmar aprovação e revisar hipóteses e declaração de uso de IA antes da entrega.

@@ -1,0 +1,10 @@
+# Instale com: python -m pip install -r docs/projects/eda/code/requirements.txt
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+scikit-learn>=1.6
+scipy>=1.12
+umap-learn>=0.5.7
+ipykernel
+nbformat
+nbclient

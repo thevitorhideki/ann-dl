@@ -27,7 +27,7 @@ ai_use: "none"
     avaliação: não existe "acurácia" de uma amostra gerada.
 
 O dataset e as decisões da equipe ficam na [página do projeto](../index.md). Reaproveite o
-[EDA](../eda/index.md) — o que você descobriu sobre distribuições e desbalanceamento é
+[EDA](../eda/index.ipynb) — o que você descobriu sobre distribuições e desbalanceamento é
 exatamente o que o modelo generativo precisa reproduzir.
 
 ## 1. Objetivo

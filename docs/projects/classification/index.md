@@ -25,7 +25,7 @@ ai_use: "none"
     apague esta pasta e a linha correspondente na `nav` do `mkdocs.yml`.
 
 O dataset e as decisões da equipe ficam na [página do projeto](../index.md). As duas
-primeiras seções abaixo são exigidas pelo enunciado, mas o [EDA](../eda/index.md) já as
+primeiras seções abaixo são exigidas pelo enunciado, mas o [EDA](../eda/index.ipynb) já as
 respondeu em profundidade: **resuma e aponte para lá**, em vez de refazer a análise.
 
 ## 1. Escolha do dataset
@@ -39,7 +39,7 @@ precisa resolver.
 
 ## 3. Limpeza e normalização
 
-Execute o plano de pré-processamento definido no [EDA](../eda/index.md#8-plano-de-pre-processamento)
+Execute o plano de pré-processamento definido no [EDA](../eda/index.ipynb)
 e relate o que mudou em relação ao planejado — e por quê.
 
 !!! note "Desbalanceamento"

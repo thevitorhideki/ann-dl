@@ -132,6 +132,11 @@ not_in_nav: |
   /exercises/*/code/*
   /projects/*/code/*
 
+# O relatório Markdown acompanha a entrega no repo; o notebook é a página do site.
+# Ambos têm basename index e disputariam a mesma URL se renderizados juntos.
+exclude_docs: |
+  /projects/eda/index.md
+
 extra_javascript:
   # A configuração precisa vir ANTES da biblioteca do MathJax
   - javascripts/mathjax.js
@@ -159,7 +164,7 @@ nav:
   # O projeto é UM só, com três entregas ao longo do semestre.
   - Projeto:
     - projects/index.md
-    - 1. EDA: projects/eda/index.md
+    - 1. EDA: projects/eda/index.ipynb
     # Escolha UMA das duas linhas abaixo, e apague a outra (e a pasta que sobrar):
     - 2. Classificação: projects/classification/index.md
     - 2. Regressão: projects/regression/index.md

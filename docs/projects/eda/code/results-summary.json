@@ -1,0 +1,37 @@
+{
+  "rows": 45211,
+  "features_raw": 16,
+  "numeric_raw": 7,
+  "categorical_raw": 9,
+  "positive_n": 5289,
+  "positive_pct": 11.698480458295547,
+  "baseline_accuracy_pct": 88.30151954170445,
+  "imbalance_ratio": 7.548118737001324,
+  "train_n": 36168,
+  "test_n": 9043,
+  "features_processed": 80,
+  "duplicates": 0,
+  "nan_raw": 0,
+  "unknown_column": "poutcome",
+  "unknown_pct": 81.74780473778506,
+  "most_correlated_pair": [
+    "pdays",
+    "previous"
+  ],
+  "spearman": 0.9857838474794289,
+  "outlier_rows_train": 9757,
+  "compressed_outlier_rows_train": 9565,
+  "log_rows_train": 33725,
+  "pca_2_variance_pct": 27.27167308330536,
+  "pca_components_90": 32,
+  "duration_median_yes": 426.0,
+  "duration_median_no": 164.0,
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "scikit-learn": "1.9.1",
+    "umap-learn": "0.5.12"
+  },
+  "sha256": "d1513ec63b385506f7cfce9f2c5caa9fe99e7ba4e8c3fa264b3aaf0f849ed32d"
+}

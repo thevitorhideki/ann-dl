@@ -28,7 +28,7 @@ abrir uma página sozinha, sem passar por aqui.
 
 | # | Entrega | Página |
 |---|---------|--------|
-| 1 | EDA | [EDA](eda/index.md) |
+| 1 | EDA | [EDA](eda/index.ipynb) |
 | 2 | Classificação **ou** Regressão | [Classificação](classification/index.md) · [Regressão](regression/index.md) |
 | 3 | Generativo | [Generativo](generative/index.md) |
 
@@ -54,16 +54,19 @@ duas viáveis.
 
 | | |
 |---|---|
-| **Nome** | |
-| **Fonte (URL)** | |
-| **Licença / termos de uso** | |
-| **Amostras** | |
-| **Features** | |
-| **Variável alvo** | |
-| **Tarefa escolhida** | Classificação ou Regressão |
+| **Nome** | UCI Bank Marketing — versão `bank-full.csv` |
+| **Fonte (URL)** | [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/222/bank+marketing) |
+| **Licença / termos de uso** | CC BY 4.0; documentação da versão em `eda/code/bank-names.txt` |
+| **Amostras** | 45.211 registros |
+| **Features** | 16 entradas brutas: 7 numéricas e 9 categóricas |
+| **Variável alvo** | `y`: contratação de depósito a prazo (`yes` / `no`) |
+| **Tarefa escolhida** | Classificação binária |
 
-Justifique em 3–5 linhas: por que este dataset, e o que nele torna a tarefa escolhida
-interessante em vez de trivial.
+O dataset combina perfil do cliente, dados bancários e histórico de campanhas. A classe
+positiva minoritária, as escalas heterogêneas e categorias desconhecidas exigem preparação
+cuidadosa para redes neurais. O cenário é a previsão antes da ligação, com exclusão de
+`duration` e, conservadoramente, `campaign`. A disponibilidade de dia, mês e canal planejados
+é uma hipótese a confirmar. Aprovação pelo docente: preencher com o status real.
 
 ## Status
 
