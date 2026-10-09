@@ -1,20 +1,10 @@
 #,Métrica,Valor
-1,"Dataset, tarefa e alvo",Bank Marketing / bank-full.csv; classificação; y=yes/no
-2,Instâncias × features (numéricas / categóricas),"45,211 × 16 (7 / 9), mais y"
-3,Coluna com mais NaN e %,"Todas empatadas: 0 (0,00%)"
-4,Maior desconhecimento semântico,poutcome: 81.75% unknown
-5,Colunas removidas e motivo,duration: pós-ligação; campaign: inclui contato atual
-6,Classe minoritária,"yes: 11.70% (5,289)"
-7,Razão de desbalanceamento,7.55:1
-8,Baseline sempre no,Acurácia 88.30%; recall positivo 0%
-9,Treino / teste,"36,168 / 9,043"
-10,Par numérico mais correlacionado,pdays × previous: Spearman 0.986
-11,Maior |correlação numérica–alvo|,duration: 0.343 (inclui features excluídas)
-12,Duplicatas / inconsistências nas regras,0 / 0
-13,Linhas com flags IQR nas numéricas do modelo,"9,757 (treino)"
-14,Flags nas caudas comprimidas por log,"9,565 linhas; removidas 0; winsorizadas 0"
-15,Total de linhas com transformação log relevante,"33,725 (treino)"
-16,Variância PC1 + PC2,27.27%
-17,Features antes / após encoding,16 brutas → 14 retidas + indicador → 80 finais
-18,Shape após pipeline (treino / teste),"(36168, 80) / (9043, 80)"
-19,NaN / infinitos após pipeline,0 / 0 em ambas as partições
+1,Amostras,45.211
+2,Features (antes / depois do encoding),15 / 80 (16 entradas brutas; 2 excluídas e 1 indicador acrescentado)
+3,Features com ausentes,0 com NaN; 4 categóricas com unknown
+4,Maior % de ausência em uma feature,"0,00% de NaN em todas as features; unknown: 81,75% em poutcome"
+5,Linhas duplicadas,"0 (0,00%)"
+6,Razão de desbalanceamento do alvo,"7,55:1 (no / yes)"
+7,Acurácia (ou erro) do baseline trivial,"88,30% de acurácia, sempre prevendo no"
+8,Maior correlação feature–alvo,"duration: 0,343 (Spearman no treino; excluída por vazamento)"
+9,Amostras treino / teste após o split,36.168 / 9.043
