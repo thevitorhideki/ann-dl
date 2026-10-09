@@ -9,17 +9,15 @@ ao longo do semestre, cada uma com data e peso próprios.
 
 ## Equipe
 
-!!! danger "Preencha antes de qualquer entrega"
+!!! info "Identificação da equipe"
 
-    Toda entrega do projeto é avaliada em equipe. Se os nomes não estiverem aqui, não há
-    como atribuir a nota — e o mesmo vale para o `mkdocs.yml`, cujo `site_author` deve
-    listar o grupo.
+    A equipe abaixo responde pelas entregas do projeto. Os nomes também aparecem no
+    cabeçalho da EDA e no campo `site_author` do `mkdocs.yml`.
 
 | Nome completo | E-mail | GitHub |
 |---------------|--------|--------|
-| | | |
-| | | |
-| | | |
+| Vitor Hideki Pereira Katakura | <vitorhpk@al.insper.edu.br> | [@thevitorhideki](https://github.com/thevitorhideki) |
+| Antonio Anderson de Araujo Julião | <antonioaaj@al.insper.edu.br> | [@andersonjuIiao](https://github.com/andersonjuIiao) |
 
 Times de 2 a 3 pessoas. Repita esses nomes no cabeçalho de cada entrega — quem corrige pode
 abrir uma página sozinha, sem passar por aqui.

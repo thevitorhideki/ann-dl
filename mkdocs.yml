@@ -6,7 +6,7 @@
 #  Passo a passo em docs/template/index.md > Publicação no GitHub Pages.
 # =============================================================================
 site_name: ANN-DL · Entregas                  # TROCAR: título exibido no topo do site
-site_author: Vitor Hideki, Pereira Katakura              # TROCAR: seu nome (ou os nomes do grupo)
+site_author: Vitor Hideki Pereira Katakura, Antonio Anderson de Araujo Julião
 site_url: https://thevitorhideki.github.io/ann-dl    # TROCAR: https://<seu-usuario>.github.io/<seu-repo>
 repo_url: https://github.com/thevitorhideki/ann-dl/   # TROCAR: https://github.com/<seu-usuario>/<seu-repo>
 repo_name: thevitorhideki/ann-dl                     # TROCAR: <seu-usuario>/<seu-repo>
