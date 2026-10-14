@@ -44,7 +44,7 @@ Quem responde por este repositório. Os **exercícios são individuais**; a equi
 
 - [x] [Data](exercises/data/index.ipynb)
 - [ ] [Perceptron](exercises/perceptron/index.md)
-- [ ] [MLP](exercises/mlp/index.md)
+- [x] [MLP](exercises/mlp/index.ipynb)
 - [ ] [VAE](exercises/vae/index.md)
 
 ### [Projeto](projects/index.md) — em equipe

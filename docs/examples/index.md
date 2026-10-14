@@ -29,7 +29,7 @@ nav:
 
 ## 1. Relatório em Markdown
 
-O caminho principal. Veja [1. Data](../exercises/data/index.md) preenchido como modelo:
+O caminho principal. Veja [MLP](../exercises/mlp/index.ipynb) preenchido como modelo:
 *front matter*, títulos espelhando o enunciado, figura legendada, código incluído a partir
 de `code/` e tabela *Results summary*.
 
@@ -116,7 +116,7 @@ Para colocar o badge dentro de uma página, em vez de no menu:
     ///
     ```
 
-    ![Exemplo de figura](../exercises/data/figures/fig01-exemplo.svg)
+    ![Nuvens de pontos do exercício Data](../exercises/data/figures/fig01-point-clouds.png)
     /// caption
     **Figura 1** — clique na imagem para ampliar (`glightbox`).
     ///

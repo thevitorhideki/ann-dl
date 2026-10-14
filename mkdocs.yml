@@ -136,6 +136,7 @@ not_in_nav: |
 # Ambos têm basename index e disputariam a mesma URL se renderizados juntos.
 exclude_docs: |
   /projects/eda/index.md
+  /exercises/mlp/index.md
 
 extra_javascript:
   # A configuração precisa vir ANTES da biblioteca do MathJax
@@ -158,7 +159,7 @@ nav:
   # aqui e as pastas correspondentes em docs/.
   - Data: exercises/data/index.ipynb
   - Perceptron: exercises/perceptron/index.md
-  - MLP: exercises/mlp/index.md
+  - MLP: exercises/mlp/index.ipynb
   - VAE: exercises/vae/index.md
 
   # O projeto é UM só, com três entregas ao longo do semestre.
