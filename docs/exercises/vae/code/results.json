@@ -1,0 +1,42 @@
+{
+  "test_d16": {
+    "reconstruction": 81.28727287597657,
+    "kl": 20.153741540527342,
+    "negative_elbo": 101.4410144165039
+  },
+  "test_d2": {
+    "reconstruction": 136.0346826171875,
+    "kl": 6.540583154296875,
+    "negative_elbo": 142.57526577148437
+  },
+  "validation_kl_d16_first": 13.01283667602539,
+  "validation_kl_d16_last": 20.101319903564452,
+  "first_test_indices_by_digit": [
+    3,
+    2,
+    1,
+    18,
+    4,
+    8,
+    11,
+    0,
+    61,
+    7
+  ],
+  "interpolation_indices": [
+    0,
+    1
+  ],
+  "environment": {
+    "python": "3.14.7",
+    "torch": "2.15.0",
+    "torchvision": "0.29.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "device": "cpu",
+    "threads": 2,
+    "evaluation_seed": 123,
+    "evaluation_samples_per_image": 1
+  }
+}
