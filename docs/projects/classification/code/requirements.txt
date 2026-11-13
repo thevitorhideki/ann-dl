@@ -1,0 +1,9 @@
+# Instale com: python -m pip install -r docs/projects/classification/code/requirements.txt
+# Versões do ambiente local usado para conferir os resultados salvos.
+# Índice adicional para disponibilizar os wheels de CPU do PyTorch.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0
+numpy==2.5.3
+pandas==3.0.6
+matplotlib==3.11.2
+scikit-learn==1.9.1

@@ -1,0 +1,6 @@
+,age,job,balance,housing,loan,contact,month,poutcome,previous,pdays,proba
+9144,56,housemaid,1238,no,no,unknown,jun,unknown,0,-1,0.002569818
+30373,54,services,0,yes,no,cellular,feb,other,1,267,0.0026128797
+28220,53,blue-collar,-462,no,no,cellular,jan,unknown,0,-1,0.0027014152
+23302,36,management,0,no,no,telephone,aug,unknown,0,-1,0.004245823
+28485,33,services,-452,no,no,cellular,jan,unknown,0,-1,0.004505466

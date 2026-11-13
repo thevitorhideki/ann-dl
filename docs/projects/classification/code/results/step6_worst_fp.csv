@@ -1,0 +1,6 @@
+,age,job,balance,housing,loan,contact,month,poutcome,previous,pdays,proba
+43340,37,technician,1458,no,no,cellular,mar,success,1,326,0.8468392
+42577,32,services,914,no,no,cellular,dec,success,1,197,0.83963025
+42711,62,retired,243,no,no,cellular,jan,success,1,280,0.82684857
+41507,40,admin.,732,no,no,cellular,sep,success,4,139,0.8170415
+42753,69,retired,4572,no,no,cellular,jan,success,3,92,0.81562686

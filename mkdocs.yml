@@ -167,9 +167,7 @@ nav:
   - Projeto:
     - projects/index.md
     - 1. EDA: projects/eda/index.ipynb
-    # Escolha UMA das duas linhas abaixo, e apague a outra (e a pasta que sobrar):
     - 2. Classificação: projects/classification/index.md
-    - 2. Regressão: projects/regression/index.md
     - 3. Generativo: projects/generative/index.md
 
   # Remova esta seção inteira quando não precisar mais dos exemplos.

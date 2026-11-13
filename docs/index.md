@@ -52,7 +52,7 @@ Quem responde por este repositório. Os **exercícios são individuais**; a equi
 Um projeto, um dataset, três entregas:
 
 - [ ] [EDA](projects/eda/index.ipynb)
-- [ ] [Classificação](projects/classification/index.md) **ou** [Regressão](projects/regression/index.md)
+- [ ] [Classificação](projects/classification/index.md)
 - [ ] [Generativo](projects/generative/index.md)
 
 ## Checklist antes de cada entrega

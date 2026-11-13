@@ -27,7 +27,7 @@ abrir uma página sozinha, sem passar por aqui.
 | # | Entrega | Página |
 |---|---------|--------|
 | 1 | EDA | [EDA](eda/index.ipynb) |
-| 2 | Classificação **ou** Regressão | [Classificação](classification/index.md) · [Regressão](regression/index.md) |
+| 2 | Classificação | [Classificação](classification/index.md) |
 | 3 | Generativo | [Generativo](generative/index.md) |
 
 Datas e pesos são da sua edição — veja o
@@ -39,11 +39,10 @@ Datas e pesos são da sua edição — veja o
     entregou. Escreva os relatórios de modo que você consiga defendê-los meses depois, e
     confira no overview da sua edição como a prova entra na nota.
 
-!!! warning "Escolha uma: classificação ou regressão"
+!!! info "Tarefa escolhida: classificação"
 
-    A segunda entrega é **uma das duas**, não as duas. Este template traz as duas pastas
-    para você escolher; depois de decidir, apague a que não vai usar — da pasta `docs/projects/`
-    **e** da `nav` no `mkdocs.yml`.
+    A segunda entrega continua a classificação binária definida no EDA. A opção de regressão
+    foi removida da estrutura e da navegação do site.
 
 ## Dataset
 
@@ -69,7 +68,7 @@ cuidadosa para redes neurais. O cenário é a previsão antes da ligação, com 
 ## Status
 
 - [ ] **1. EDA**
-- [ ] **2. Classificação ou Regressão**
+- [ ] **2. Classificação**
 - [ ] **3. Generativo**
 
 ## Registro de decisões
@@ -80,4 +79,9 @@ projeto.
 
 | Data | Decisão | Motivo |
 |------|---------|--------|
-| | | |
+| 01/11/2026 | Entrega 2 é **classificação**; pasta e item de menu de regressão removidos | O alvo `y` é binário e o EDA já foi feito para classificação |
+| 01/11/2026 | Validação = 15% do treino do EDA, estratificada, seed 42; teste do EDA intocado até o passo 5 | O enunciado exige o mesmo split do EDA e a validação tirada do treino |
+| 01/11/2026 | Métrica principal PR-AUC (`yes`); critério: rede ≥ 1,05 × melhor baseline no teste e diferença maior que um desvio padrão entre seeds | Com 11,70% de positivos, a acurácia isolada mascara o desempenho na classe minoritária |
+| 01/11/2026 | Limiar escolhido na validação pelo custo FP:FN = 1:5 | Perder um contratante custa mais que uma ligação a mais (hipótese da equipe) |
+| 01/11/2026 | Rede final 128-64-32, dropout 0,3, weight decay 0,05; sem `pos_weight` | Melhor PR-AUC de validação entre 16 configurações; `pos_weight` piorou todas |
+| 13/11/2026 | Integração e conferência dos resultados salvos, alinhamento do critério automatizado e correção do resumo de subgrupos | Preservar a seleção original por validação e distinguir maior taxa de erro de pior recall |
