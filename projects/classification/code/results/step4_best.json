@@ -1,0 +1,23 @@
+{
+  "pos_ratio": 7.548943270300334,
+  "best": {
+    "config": "128-64-32 lr=0.001 drop=0.3 wd=0.05",
+    "hidden": "128-64-32",
+    "lr": 0.001,
+    "dropout": 0.3,
+    "weight_decay": 0.05,
+    "batchnorm": false,
+    "pos_weight": 1.0,
+    "params": 20737,
+    "best_epoch": 28,
+    "stopped_epoch": 43,
+    "train_pr_auc": 0.5570915489749325,
+    "val_pr_auc": 0.46662232851977636,
+    "val_roc_auc": 0.8061227005359459,
+    "val_f1_yes": 0.5031271716469771,
+    "val_threshold": 0.22,
+    "val_cost": 0.3330261702911906,
+    "val_loss_best": 0.28154420852661133
+  },
+  "n_configs": 16
+}

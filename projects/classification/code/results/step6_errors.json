@@ -1,0 +1,12 @@
+{
+  "threshold": 0.22,
+  "val_pr_auc_seed42": 0.46662232851977625,
+  "test_error_rate": 0.1383390467765122,
+  "worst_error_subgroup": {
+    "feature": "month",
+    "group": "dec",
+    "n": 36,
+    "errors": 20,
+    "error_rate": 0.5555555555555556
+  }
+}
